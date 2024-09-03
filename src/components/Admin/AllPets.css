@@ -1,0 +1,53 @@
+/* AllPets.css */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pet-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .pet-item {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 1rem;
+    flex: 1 1 calc(33.333% - 2rem);
+    margin: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pet-item h3 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .pet-item p {
+    margin-bottom: 0.75rem;
+  }
+  
+  .pet-item button {
+    background-color: #007bff;
+    border: none;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+  }
+  
+  .pet-item button:hover {
+    background-color: #0056b3;
+  }
+  
+  .error {
+    color: red;
+    margin-bottom: 1rem;
+  }
+  
