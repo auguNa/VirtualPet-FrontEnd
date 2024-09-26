@@ -1,0 +1,27 @@
+/* src/components/Home/HomePage.css */
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+  }
+  
+  h1, p {
+    margin: 0; /* Remove default margin */
+  }
+  
+  /* Animation styles */
+  .fade-in {
+    opacity: 0; /* Start fully transparent */
+    animation: fadeIn 1s forwards; /* Apply fadeIn animation */
+    animation-delay: 0.5s; /* Delay before starting the animation */
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1; /* End fully opaque */
+    }
+  }

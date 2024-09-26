@@ -8,7 +8,7 @@ const PetCreate = () => {
   const [color, setColor] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate(); 
 
   const handleCreatePet = async (e) => {
     e.preventDefault();
@@ -61,6 +61,7 @@ const PetCreate = () => {
           <label>Pet Name:</label>
           <input
             type="text"
+            name="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
@@ -68,21 +69,33 @@ const PetCreate = () => {
         </div>
         <div>
           <label>Type:</label>
-          <input
-            type="text"
+          <select
+            name="type"
             value={type}
             onChange={(e) => setType(e.target.value)}
             required
-          />
+          >
+            <option value="">Select a type</option>
+            <option value="Dragon">Dragon</option>
+            <option value="Unicorn">Unicorn</option>
+            <option value="Alien">Alien</option>
+          </select>
         </div>
         <div>
           <label>Color:</label>
-          <input
-            type="text"
+          <select
+            name="color"
             value={color}
             onChange={(e) => setColor(e.target.value)}
             required
-          />
+          >
+            <option value="">Select a color</option>
+            <option value="Red">Red</option>
+            <option value="Green">Green</option>
+            <option value="Blue">Blue</option>
+            <option value="Purple">Purple</option>
+            <option value="Black">Black</option>
+          </select>
         </div>
         <button type="submit">Create Pet</button>
       </form>

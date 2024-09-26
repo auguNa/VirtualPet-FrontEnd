@@ -1,50 +1,58 @@
 .container {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  h2 {
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-  
-  .pet-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  
-  .pet-item {
-    flex: 1 1 calc(33.333% - 1rem);
-    background-color: #fff;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .pet-item h3 {
-    margin-bottom: 0.5rem;
-  }
-  
-  .pet-item p {
-    margin: 0.5rem 0;
-  }
-  
-  button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Centering buttons in a row with space between */
+.button-row {
+  display: flex;
+  justify-content: space-between; /* Space between the buttons */
+  align-items: center;
+  margin-bottom: 2rem; /* Space below the buttons */
+}
+
+.pet-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.pet-item {
+  flex: 1 1 calc(33.333% - 1rem);
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.pet-item h3 {
+  margin-bottom: 0.5rem;
+}
+
+.pet-item p {
+  margin: 0.5rem 0;
+}
+
+/* Button styling */
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

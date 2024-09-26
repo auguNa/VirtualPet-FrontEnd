@@ -14,8 +14,8 @@ export const handleLogin = async (username, password) => {
       throw new Error("Login failed");
     }
 
-    const data = await response.json(); // Assuming the response contains a JSON object
-    const token = data.token; // Assuming the token is in a property named 'token'
+    const data = await response.json(); 
+    const token = data.token; 
 
     localStorage.setItem("authToken", token);
 

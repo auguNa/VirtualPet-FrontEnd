@@ -47,7 +47,7 @@ const AllPets = () => {
   const handleAction = async (petId, action) => {
     try {
       const response = await axios.post(
-        `http://localhost:8080/api/pets/${petId}/${action}`,
+        `http://localhost:8080/api/admin/pets/${petId}/${action}`,
         {},
         {
           headers: {
@@ -73,10 +73,9 @@ const AllPets = () => {
             <p>Color: {pet.color}</p>
             <p>Mood: {pet.mood}</p>
             <p>Energy Level: {pet.energy}</p>
-            <p>Owner: {pet.ownerName}</p> {/* Ensure your backend returns the ownerName */}
-            <button onClick={() => navigate(`/pets/${pet.id}`)}>View / Update</button>
+            <p>Owner: {pet.ownerName}</p> 
+            <button onClick={() => navigate(`/pets/${pet.id}`)}>Update</button>
             <button onClick={() => handleDeletePet(pet.id)}>Delete</button>
-            {/* Action buttons */}
             <button onClick={() => handleAction(pet.id, 'feed')}>Feed</button>
             <button onClick={() => handleAction(pet.id, 'play')}>Play</button>
             <button onClick={() => handleAction(pet.id, 'rest')}>Rest</button>

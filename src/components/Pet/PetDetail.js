@@ -43,11 +43,11 @@ const PetDetail = () => {
     e.preventDefault();
     setError("");
     setSuccess("");
-
+  
     try {
       await axios.put(
         `http://localhost:8080/api/pets/${id}`,
-        { name, color, type },  // Include 'type' if it's supposed to be updated
+        { name, color, type },
         {
           headers: {
             Authorization: `Bearer ${authToken}`,
@@ -55,12 +55,26 @@ const PetDetail = () => {
         }
       );
       setSuccess("Pet updated successfully!");
-      navigate("/user"); // Redirect back to user page after update
+  
+      // Decode the token to get user roles
+      const decodedToken = JSON.parse(atob(authToken.split('.')[1]));
+      console.log("Decoded token:", decodedToken);
+      const userRoles = decodedToken.roles || []; 
+  
+      const userRole = userRoles.length > 0 ? userRoles[0] : undefined;
+  
+      // Redirect based on role
+      if (userRole === 'ROLE_ADMIN') {
+        navigate("/admin/pets"); // Redirect admin to admin pets page
+      } else {
+        navigate("/user"); // Redirect regular user to user page
+      }
     } catch (error) {
       setError("Error updating pet");
       console.error("Error updating pet", error);
     }
   };
+  
 
   if (!pet) {
     return <div>Loading...</div>;
@@ -84,21 +98,31 @@ const PetDetail = () => {
         </div>
         <div>
           <label>Color:</label>
-          <input
-            type="text"
+          <select
             value={color}
             onChange={(e) => setColor(e.target.value)}
             required
-          />
+          >
+            <option value="">Select a color</option>
+            <option value="Red">Red</option>
+            <option value="Green">Green</option>
+            <option value="Blue">Blue</option>
+            <option value="Purple">Purple</option>
+            <option value="Black">Black</option>
+          </select>
         </div>
         <div>
           <label>Type:</label>
-          <input
-            type="text"
+          <select
             value={type}
             onChange={(e) => setType(e.target.value)}
             required
-          />
+          >
+            <option value="">Select a type</option>
+            <option value="Dragon">Dragon</option>
+            <option value="Unicorn">Unicorn</option>
+            <option value="Alien">Alien</option>
+          </select>
         </div>
         <button type="submit">Update Pet</button>
       </form>

@@ -26,15 +26,13 @@ const Login = () => {
       console.log('Token received:', authToken);
 
       if (authToken) {
-        // Store the token in localStorage
         localStorage.setItem('authToken', authToken);
         
         // Decode the token to get user roles
-        const decodedToken = JSON.parse(atob(authToken.split('.')[1])); // Decode the JWT token
+        const decodedToken = JSON.parse(atob(authToken.split('.')[1])); 
         console.log('Decoded token:', decodedToken);
-        const userRoles = decodedToken.roles || []; // Assuming roles are stored in the token as an array
+        const userRoles = decodedToken.roles || []; 
 
-        // Determine the user's role (assuming a single role for simplicity)
         const userRole = userRoles.length > 0 ? userRoles[0] : undefined;
 
         login({ username }, userRole); // Update context with user info and role
@@ -65,6 +63,7 @@ const Login = () => {
           <label>Username:</label>
           <input
             type="text"
+            name="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
@@ -74,6 +73,7 @@ const Login = () => {
           <label>Password:</label>
           <input
             type="password"
+             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required

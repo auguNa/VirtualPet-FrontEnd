@@ -1,132 +1,184 @@
-/* AdminPage.css */
-
 /* General container for the admin page */
 .admin-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 90%; /* Use more width to reduce the empty space */
+  max-width: 1200px; /* Allow up to 1200px */
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Full-width background for the body */
+body {
+  background-color: #f0f0f0; /* Subtle background color */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .admin-container {
+      width: 95%; /* Take more space on smaller screens */
+      max-width: none; /* Remove max-width constraint for small screens */
   }
-  
-  /* Heading styles */
-  .admin-container h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #333;
-    text-align: center;
-  }
-  
-  /* Error message */
-  .admin-container .error {
-    color: red;
-    margin-bottom: 20px;
-  }
-  
-  /* User list styles */
-  .user-list {
-    list-style-type: none;
-    padding: 0;
-  }
-  
+}
+
+
+/* Heading styles */
+.admin-container h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+/* Error message */
+.admin-container .error {
+  color: red;
+  margin-bottom: 20px;
+}
+
+/* User list styles */
+.user-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Individual user item */
+.user-list li {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap in smaller screens */
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* User details */
+.user-details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* Adds space between elements */
+}
+
+/* User name */
+.user-details strong {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}
+
+/* Pet list within a user item */
+.pet-list {
+  list-style-type: none;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.pet-list li {
+  font-size: 0.9em;
+  color: #555;
+}
+
+/* Button styles */
+.user-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.user-actions button {
+  padding: 8px 12px;
+  font-size: 0.9em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect */
+.user-actions button:hover {
+  background-color: #ddd;
+}
+
+/* Specific button styles */
+.user-actions button.edit {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.user-actions button.delete {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Table styling */
+table.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+table.table th,
+table.table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd; /* Light border between rows */
+}
+
+table.table th {
+  background-color: #f1f1f1; /* Light background for headers */
+  font-weight: bold;
+}
+
+/* Form styles for editing */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+form label {
+  font-weight: bold;
+  color: #333;
+}
+
+form input {
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+form button {
+  padding: 10px;
+  font-size: 1em;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #45a049;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
   .user-list li {
-    background-color: #fff;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+      flex-direction: column; /* Stack items in smaller screens */
+      align-items: flex-start;
   }
-  
-  /* User details */
-  .user-details {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* User name */
-  .user-details strong {
-    font-size: 1.2em;
-    margin-bottom: 5px;
-  }
-  
-  /* Pet list within a user item */
-  .pet-list {
-    list-style-type: none;
-    padding-left: 20px;
-    margin: 0;
-  }
-  
-  .pet-list li {
-    font-size: 0.9em;
-    color: #555;
-  }
-  
-  /* Button styles */
+
   .user-actions {
-    display: flex;
-    gap: 10px;
+      flex-direction: row; /* Change to row for smaller devices */
+      gap: 5px;
+      flex-wrap: wrap;
   }
-  
-  .user-actions button {
-    padding: 8px 12px;
-    font-size: 0.9em;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .user-actions button:hover {
-    background-color: #ddd;
-  }
-  
-  .user-actions button.edit {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  .user-actions button.delete {
-    background-color: #f44336;
-    color: white;
-  }
-  
-  /* Form styles for editing */
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  
-  form label {
-    font-weight: bold;
-    color: #333;
-  }
-  
-  form input {
-    padding: 10px;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  form button {
-    padding: 10px;
-    font-size: 1em;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  form button:hover {
-    background-color: #45a049;
-  }
-  
+}

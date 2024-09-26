@@ -1,47 +1,29 @@
 // src/components/Admin/AdminDashboard.js
 
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate, Outlet } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthContext';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
+  const { logout } = useContext(AuthContext);
+
+
+  const handleLogout = () => {
+    localStorage.removeItem('authToken');
+    logout(); 
+    navigate('/login'); // Redirect to login page
+  };
 
   return (
     <div className="container">
       <h2>Admin Dashboard</h2>
-      <ul>
-        <li>
-          <button
-            onClick={() => {
-              console.log('Navigating to Manage Users');
-              navigate('/admin/users');
-            }}
-          >
-            Manage Users
-          </button>
-        </li>
-        <li>
-          <button
-            onClick={() => {
-              console.log('Navigating to Get All Pets');
-              navigate('/admin/pets');
-            }}
-          >
-            Get All Pets
-          </button>
-        </li>
-        <li>
-          <button
-            onClick={() => {
-              console.log('Navigating to Admin Settings');
-              navigate('/admin/settings');
-            }}
-          >
-            Admin Settings
-          </button>
-        </li>
-      </ul>
-      <Outlet /> {/* This is where nested routes will render */}
+      <div className="button-row">
+        <button onClick={() => navigate('/admin/users')}>Manage Users</button>
+        <button onClick={() => navigate('/admin/pets')}>Get All Pets</button>
+                <button onClick={handleLogout}>Logout</button>
+      </div>
+      <Outlet /> 
     </div>
   );
 };

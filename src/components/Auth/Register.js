@@ -15,6 +15,7 @@ const Register = () => {
     setError('');
     setSuccess('');
 
+    // Check if passwords match
     if (password !== confirmPassword) {
       setError('Passwords do not match');
       return;
@@ -24,17 +25,23 @@ const Register = () => {
       const response = await axios.post('http://localhost:8080/api/auth/register', {
         username,
         password,
-        roles: ["ROLE_USER"], // Include the roles field
+        roles: ["ROLE_USER"], // Include roles for registration
       });
 
+      // On successful registration, display success message
       setSuccess('Registration successful. Redirecting to login...');
       setTimeout(() => {
         navigate('/login');
-      }, 1000); // Redirect to login after 2 seconds
+      }, 2000); // Redirect to login after 2 seconds
     } catch (error) {
-      if (error.response) {
+      // Handle specific user already exists error
+      if (error.response && error.response.status === 409) {
+        setError('Username already exists. Please choose a different one.');
+      } else if (error.response) {
+        // Generic error from the backend
         setError(error.response.data);
       } else {
+        // Other errors, like network issues
         setError('Registration failed. Please try again later.');
       }
     }
@@ -43,6 +50,7 @@ const Register = () => {
   return (
     <div className="container">
       <h2>Register</h2>
+      {/* Display error or success messages */}
       {error && <div className="error">{error}</div>}
       {success && <div className="success">{success}</div>}
       <form onSubmit={handleRegister}>
@@ -50,6 +58,7 @@ const Register = () => {
           <label>Username:</label>
           <input
             type="text"
+            name="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
@@ -59,6 +68,7 @@ const Register = () => {
           <label>Password:</label>
           <input
             type="password"
+            name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -69,6 +79,7 @@ const Register = () => {
           <input
             type="password"
             value={confirmPassword}
+            name="confirmPassword"
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
