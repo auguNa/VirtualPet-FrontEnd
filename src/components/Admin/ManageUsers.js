@@ -18,7 +18,7 @@ const ManageUsers = () => {
     if (!authState || authState.role !== 'ROLE_ADMIN') {
       console.warn('User is not an admin or authState is undefined. Redirecting...');
       navigate('/user');
-      return; // Prevent further execution
+      return; 
     }
 
     const fetchUsers = async () => {

@@ -43,14 +43,17 @@ const Login = () => {
         } else if (userRole === 'ROLE_USER') {
           navigate('/user'); // Redirect to the user page
         } else {
-          navigate('/'); // Redirect to the homepage or another default page if role is not recognized
+          navigate('/user'); // Redirect to the homepage or another default page if role is not recognized
         }
       } else {
         setError('Login failed: No token received');
       }
     } catch (error) {
-      setError(`Login failed: ${error.message}`);
-      console.error('Login failed', error);
+      if (error.response && error.response.status === 401) {
+        setError('Invalid username or password');
+      } else {
+        setError('Login failed: ' + error.message);
+      }
     }
   };
 
